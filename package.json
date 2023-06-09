@@ -19,7 +19,8 @@
     "react-dom": "18.2.0",
     "react-google-login": "^5.2.2",
     "react-icons": "^4.9.0",
-    "sanity": "^3.11.3"
+    "sanity": "^3.11.3",
+    "zustand": "^4.3.8"
   },
   "devDependencies": {
     "@types/node": "20.2.5",
