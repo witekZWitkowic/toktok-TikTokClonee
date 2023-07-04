@@ -27,6 +27,7 @@ const VideoCard: NextPage<IProps> = ({post}) => {
             setPlaying(true);
         }
     }
+
   return (
     <div className='flex flex-col border-b-2 border-gray-200 pb-6'>
         <div className=' flex gap-3 p-2 cursor-pointer font-semibold rounded'>
@@ -61,9 +62,10 @@ const VideoCard: NextPage<IProps> = ({post}) => {
             onMouseEnter={()=> setIsHover(true)}
             onMouseLeave={() => setIsHover(false)}
             className='rounded-3xl'>
-                <Link href='/'>
+                <Link href={`/detail/${post._id}`}>
                     <video 
                     loop
+                    muted={isVideoMuted ? true : false}
                     ref={videoRef}
                     className='lg:w-[600px] h-30-[300px] md:h-[400px] lg:h-[530px] w-[200px] rounded-2xl cursor-pointer bg-gray-100'
                     src={post.video.asset.url} />
