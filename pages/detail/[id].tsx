@@ -17,6 +17,7 @@ interface IProps {
 const Detail = ({ postDetails }: IProps) => {
   const [post, setPost] = useState(postDetails);
   const [playing, setPlaying] = useState(false);
+  const [isVideoMuted, setIsVideoMuted] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   const onVideoClick = () => {
@@ -44,6 +45,7 @@ const Detail = ({ postDetails }: IProps) => {
             <video
               src={post.video.asset.url}
               ref={videoRef}
+              muted={isVideoMuted ? true : false}
               loop
               onClick={()=>{onVideoClick()}}
               className='h-full cursor-pointer'
@@ -58,6 +60,17 @@ const Detail = ({ postDetails }: IProps) => {
               </button>
             )}
           </div>
+        </div>
+        <div className='absolute bottom-5 lg:bottom-10 right-5 lg:right-10 cursor-pointer'>
+          {isVideoMuted ? (
+            <button onClick={() => setIsVideoMuted(false)}>
+              <HiVolumeOff className=' text-white text-2xl lg:text-4xl'/>
+            </button>
+            ) : (
+            <button onClick={() => setIsVideoMuted(true)}>
+              <HiVolumeUp className=' text-white text-2xl lg:text-4xl'/>
+            </button>
+          )}
         </div>
       </div>
       
