@@ -9,6 +9,9 @@ import { HiVolumeUp, HiVolumeOff } from 'react-icons/hi'
 import axios from 'axios'
 import { Video } from '../../types'
 import { BASE_URL } from '../../utils'
+import useAuthStore from '../../store/authStore'
+import LikeButton from '../../components/LikeButton'
+import Comments from '../../components/Comments'
 
 interface IProps {
   postDetails: Video,
@@ -20,6 +23,7 @@ const Detail = ({ postDetails }: IProps) => {
   const [isVideoMuted, setIsVideoMuted] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
   const router = useRouter();
+  const {userProfile}: any= useAuthStore();
 
   const onVideoClick = () => {
     if(playing){
@@ -28,6 +32,16 @@ const Detail = ({ postDetails }: IProps) => {
     } else {
         videoRef.current?.play();
         setPlaying(true);
+    }
+  }
+
+  const handleLike = async(like: boolean) =>{
+    if(userProfile){
+      const response = await axios.put(`http://localhost:3000/api/like`, {
+        userId: userProfile._id,
+        postId: post._id,
+        like
+      })
     }
   }
 
@@ -107,8 +121,14 @@ const Detail = ({ postDetails }: IProps) => {
             {post.caption}
           </p>
           <div>
-            {}
+            {userProfile && (
+              <LikeButton 
+                handleLike = {() => handleLike(true)}
+                handleDislike ={() => handleLike(false)}
+              />
+            )}
           </div>
+          <Comments />
         </div>
       </div>
     </div>
