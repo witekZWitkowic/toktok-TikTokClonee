@@ -48,16 +48,20 @@ const Detail = ({ postDetails }: IProps) => {
     }
   }
 
-  const addComment = async(e:any) => {
+  const addComment = async(e) => {
     e.preventDefault();
 
     if(userProfile && comment) {
       setIsPostingComment(true);
 
-      const response = await axios.put(`http://localhost:3000/api/post/${post._id}`, {
+      const {data} = await axios.put(`http://localhost:3000/api/post/${post._id}`, {
         userId: userProfile._id,
         comment
       })
+
+      setPost({...post, comments: data.comments})
+      setComment('');
+      setIsPostingComment(false)
     }
   }
 
@@ -145,7 +149,13 @@ const Detail = ({ postDetails }: IProps) => {
               />
             )}
           </div>
-          <Comments />
+          <Comments 
+            comment={comment}
+            setComment={setComment}
+            addComment={addComment}
+            comments={post.comments}
+            isPostingComment={isPostingComment}
+          />
         </div>
       </div>
     </div>
