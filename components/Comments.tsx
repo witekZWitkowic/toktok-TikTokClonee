@@ -27,7 +27,14 @@ const Comments = ({comment, setComment, addComment, comments, isPostingComment
     <div className='border-t-2 border-gray-200 pt-4 px-10 bg-[#F8F8F8] border-b-2 lg:pb-0 pb-[100px]'>
         <div className='overflow-scroll lg:h-[475px]'>
             {comments?.length ? (
-                <div></div>
+                <div>
+                    {comments.map((comment) => (
+                        <div>
+                            <p>{comment.postedBy}</p>
+                            <p>{comment.comment}</p>    
+                        </div>
+                    ))}
+                </div>
             ) : (
                 <NoResults text='There are no comments.'/>
             )}
@@ -37,7 +44,7 @@ const Comments = ({comment, setComment, addComment, comments, isPostingComment
                 <form onSubmit={addComment} className='flex gap-4'>
                     <input
                         value={comment}
-                        onChange={(e) => {setComment(e.target.value.trim())}}
+                        onChange={(e) => {setComment(e.target.value)}}
                         placeholder='Add comment.'
                         className='bg-primary px-6 py-4 text-md font-md border-2 w-[250px] md:w-[450px] lg:w-[350px] border-gray-100 focus:outline-none focus:border-2 focus:border-gray-300 flex-1 rounded-lg'
                     />
