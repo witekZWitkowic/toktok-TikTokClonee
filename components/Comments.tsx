@@ -30,7 +30,6 @@ const Comments = ({comment, setComment, addComment, comments, isPostingComment
                 <div>
                     {comments.map((comment) => (
                         <div>
-                            <p>{comment.postedBy}</p>
                             <p>{comment.comment}</p>    
                         </div>
                     ))}
