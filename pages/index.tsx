@@ -29,9 +29,9 @@ export const getServerSideProps = async ({
   }: {query: {topic: string}}) => {
     let response = null;
   if(topic){
-    response = await axios.get(`${BASE_URL}/api/discover/${topic}`);
+    response = await axios.get(`https://toktok-tik-tok-clone.vercel.app/api/discover/${topic}`);
   } else {
-  response = await axios.get(`${BASE_URL}/api/post`);
+  response = await axios.get(`https://toktok-tik-tok-clone.vercel.app/api/post`);
   }
   return {
     props: {

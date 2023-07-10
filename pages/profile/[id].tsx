@@ -83,7 +83,7 @@ export const getServerSideProps = async ({
 } : {
     params: {id: string}
 }) => {
-    const res = await axios.get(`${BASE_URL}/api/profile/${id}`)
+    const res = await axios.get(`https://toktok-tik-tok-clone.vercel.app/api/profile/${id}`)
 
     return {
         props: {data: res.data}
