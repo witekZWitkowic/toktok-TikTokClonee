@@ -11,9 +11,9 @@ const SuggestedAccounts = () => {
   const {fetchAllUsers, allUsers} = useAuthStore();
 
   useEffect(() => {
-    fetchAllUsers
-  },[fetchAllUsers]
-  )
+    fetchAllUsers()
+  },[fetchAllUsers]);
+
   return (
     <div className='xl:border-b-2 border-gray-200 pb-4'>
       <p className='text-gray-500 font-semibold m-3 mt-4 hidden xl:block'>Suggested Accounts</p>
@@ -31,6 +31,15 @@ const SuggestedAccounts = () => {
                   alt='User profile'
                   layout='responsive'
                 />
+              </div>
+              <div className='hidden xl:block'>
+                <p className='flex gap-1 items-center text-md font-bold text-primary lowercase'>
+                  {user.userName.replaceAll(' ', '')}
+                  <GoVerified className='text-blue-400'/>
+                </p>
+                <p className='capitalize text-gray-400 text-xs'>
+                  {user.userName}
+                </p>
               </div>
             </div>
           </Link>
