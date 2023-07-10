@@ -32,7 +32,7 @@ const Search = ({videos}: {videos: Video[]}) => {
             <div className='md:mt-16'>
                 {searchedAccounts.length > 0 ? (
                     searchedAccounts.map((user: IUser, idx) => (
-                            <Link href={`/profile/${user._id} key=${idx}`}>
+                            <Link href={`/profile/${user._id}`} key={idx}>
                                 <div className='flex gap-3 p-2 font-semibold rounded border-b-2 border-gray-200 cursor-pointer'>
                                     <div className='w-8 h-8'>
                                         <Image 
