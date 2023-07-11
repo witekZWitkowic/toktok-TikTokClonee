@@ -19,7 +19,7 @@ const Discover = () => {
         <p className='text-gray-500 xl:border-gray-200 pb-6 mt-4 hidden xl:block'>
             Popular Topics
         </p>
-        <div className='flex gap-3 flex-wrap'>
+        <div className='flex gap-3 xl:justify-start justify-center flex-wrap'>
             {topics.map((item)=> (
                 <Link href={`/?topic=${item.name}`} key={item.name}>
                     <div className={topic === item.name ? activeTopicStyle : topicStyle}>

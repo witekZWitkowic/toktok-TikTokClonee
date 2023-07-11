@@ -75,12 +75,12 @@ const Comments = ({comment, setComment, addComment, comments, isPostingComment
                         value={comment}
                         onChange={(e) => {setComment(e.target.value)}}
                         placeholder='Add comment.'
-                        className='bg-primary px-6 py-4 text-md font-md border-2 w-[250px] md:w-[450px] lg:w-[350px] border-gray-100 focus:outline-none focus:border-2 focus:border-gray-300 flex-1 rounded-lg'
+                        className='bg-primary px-6 py-4 text-md font-md border-2 w-[200px] sm:w-[450px] lg:w-[350px] border-gray-100 focus:outline-none focus:border-2 focus:border-gray-300 flex-1 rounded-lg'
                     />
-                    <button className='text-md text-gray-400'
+                    <button className='text-md text-gray-600'
                         onClick={addComment}
                     >
-                        {isPostingComment ? "Commenting..." : "Comment"}
+                        {isPostingComment ? "Commenting..." : "Comment!"}
                     </button>
                 </form>
             </div>

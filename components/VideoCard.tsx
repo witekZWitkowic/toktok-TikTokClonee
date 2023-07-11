@@ -29,9 +29,9 @@ const VideoCard: NextPage<IProps> = ({post}) => {
     }
 
   return (
-    <div className='flex flex-col border-b-2 border-gray-200 pb-6'>
+    <div className='flex flex-col justify-start border-b-2 border-gray-200 pb-6'>
         <div className=' flex gap-3 p-2 cursor-pointer font-semibold rounded'>
-            <div className='md:w-16 md:h-16 w-10 h-10'>
+            <div className='lg:w-16 lg:h-16 w-10 h-10'>
                 <Link href={`/profile/${post.postedBy._id}`}>
                     <>
                         <Image 
@@ -47,17 +47,17 @@ const VideoCard: NextPage<IProps> = ({post}) => {
             </div>
             <div className='flex '>
                 <Link href={`/profile/${post.postedBy._id}`}>
-                    <div className='flex items-center gap-2'>
-                        <p className='flex gap-2 items-center md:text-md font-bold text-primary'>
+                    <div className='flex lg:flex-row flex-col lg:items-center items-start justify-center lg:gap-2 gap-1'>
+                        <p className='flex lg:gap-2 gap-1 items-center lg:text-lg text-[12px] font-bold text-primary'>
                             {post.postedBy.userName}
                             <GoVerified className='text-blue-400 text-md' />
                         </p>
-                        <p className='capitalize font-medium text-sx text-gray-500 md:block'>{post.postedBy.userName}</p>
+                        <p className='capitalize font-medium lg:text-[15px] text-[10px] text-gray-500 md:block'>{post.postedBy.userName}</p>
                     </div>
                 </Link>
             </div>
         </div>
-        <div className='lg:ml-20 flex gap-4 relative'>
+        <div className='flex gap-4 relative'>
             <div 
             onMouseEnter={()=> setIsHover(true)}
             onMouseLeave={() => setIsHover(false)}
